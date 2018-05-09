@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @classroom.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @classroom.name %>
+</p>
+
+<%= link_to 'Edit', edit_classroom_path(@classroom) %> |
+<%= link_to 'Back', classrooms_path %>
+
+
+<hr>
+
+<%= form_for @studentlist do |s| %>
+  <div class="field">
+    <%= s.hidden_field :classroom_id, value: @classroom.id %>
+  </div>
+
+  <div class="field">
+    <%= s.label :student %>
+    <%= s.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= s.submit %>
+  </div>
+<% end %>
+
+<hr>
+
+<% @studentlists.each do |student| %>
+  <p><%= student.user.email %></p>
+<% end %>
+
+
+<!-- <div class="col-6">
+  <form>
+    <div class="form-group">
+      <label for="student_name">Student Name</label>
+      <input type="text" class="form-control" placeholder="Student Name">
+      <small class="form-text text-muted">Please enter a student name.</small>
+    </div>
+    <div class="form-group">
+      <label for="classes">Class</label>
+      <select class="form-control">
+        <option><%= @classroom.name %></option>
+      </select>
+      <small class="form-text text-muted">Please choose a class.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Student</button>
+  </form>
+</div> -->
